@@ -1,0 +1,51 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev src/index.ts",
+    "tsc": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@apollo/server": "^4.10.0",
+    "@types/cors": "^2.8.17",
+    "@types/dotenv-flow": "^3.3.3",
+    "@types/express": "^4.17.21",
+    "@types/express-fileupload": "^1.4.4",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.11.24",
+    "@types/nodemailer": "^6.4.14",
+    "cross-env": "^7.0.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "5.3.3"
+  },
+  "dependencies": {
+    "@types/bluebird": "^3.5.42",
+    "apollo-server-express": "^3.13.0",
+    "bcrypt": "^5.1.1",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "4.18.3",
+    "express-fileupload": "^1.4.3",
+    "express-handlebars": "^7.1.2",
+    "google-auth-library": "^9.6.3",
+    "graphql": "^16.8.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.9.11",
+    "nodemailer-express-handlebars": "^6.1.2",
+    "typedi": "^0.10.0",
+    "typeorm": "^0.3.20"
+  }
+}

@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb:10.4.30
+    container_name: mariadb
+    environment:
+      - MYSQL_DATABASE=markes
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=markes
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3308:3306"
