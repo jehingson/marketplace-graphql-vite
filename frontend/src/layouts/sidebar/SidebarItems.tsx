@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
-import AppShortcutOutlinedIcon from '@mui/icons-material/AppShortcutOutlined';
-import AddBusinessOutlinedIcon from '@mui/icons-material/AddBusinessOutlined';
-import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import ReceiptLongOutlinedIcon from '@mui/icons-material/ReceiptLongOutlined';
-import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import { useLocation } from 'react-router-dom';
-import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOutlined';
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 import useAuth from 'src/hooks/useAuth';
 import { Box, List } from '@mui/material';

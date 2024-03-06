@@ -1,14 +1,22 @@
-import React from "react";
-import ItemProducts from "./ItemProducts";
-import data from "src/db/data";
-import { Card, Grid } from "@mui/material";
+import { Box, Container} from "@mui/material";
+import useAuth from "src/hooks/useAuth";
+import RoleSales from "../roleSales";
+
 
 export default function Products() {
+  const { user } = useAuth()
+  const role = user?.role ?? ''
+
+
+  if(role !== 'admin' && role !== 'sales') {
+    return (<RoleSales />)
+  } 
+
   return (
-    <Grid container>
-      {data.map((product) => (
-        <ItemProducts {...product} />
-      ))}
-    </Grid>
+    <Box>
+     <Container >
+
+     </Container>
+    </Box>
   );
 }

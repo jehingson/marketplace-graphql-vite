@@ -150,7 +150,8 @@ export const initializeApp = async () => {
               if (!account)  throw new AuthenticationError("invalid token auth");
 
               return {
-                account
+                account,
+                authToken: header
               }
             } catch (error) {
               throw new AuthenticationError("invalid token auth");

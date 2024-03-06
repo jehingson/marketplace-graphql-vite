@@ -24,7 +24,7 @@ export const AccountsTypeDefs = gql`
     login(email: String, password: String, iv: String): Accounts
     googleRegister(token: String): Accounts
     register(username: String, email: String, password: String, iv: String): Accounts
-    updateAccount(password: String, iv: String, username: String): operationResult
+    updateAccount(password: String, iv: String, username: String, role: String): Accounts
     logout: operationResult
   }
 `
@@ -37,7 +37,7 @@ export const AccountsResolvers = {
     login: (_, args) => accountService.login(args),
     register: (_, args) => accountService.register(args),
     googleRegister: (_, args) => accountService.googleRegister(args),
-    updateAccount: (_, args, { account }) => accountService.updateAccount({...args, accountId: account?.id ?? ''}),
+    updateAccount: (_, args, { account, authToken }) =>  accountService.updateAccount({...args, accountId: account?.id ?? '', authToken }),
     logout: (_, __, { account }) => accountService.logout(account?.id ?? '')
   }
 }

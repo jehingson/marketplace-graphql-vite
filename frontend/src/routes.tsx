@@ -43,6 +43,10 @@ const reutes: RouteObject[] = [
         lazy: () => import('./pages/products'),
       },
       {
+        path: '/categories',
+        lazy: () => import('./pages/categories'),
+      },
+      {
         path: '/orders',
         lazy: () => import('./pages/orders'),
       },

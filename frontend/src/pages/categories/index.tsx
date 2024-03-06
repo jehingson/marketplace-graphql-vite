@@ -1,7 +1,10 @@
 import ContructionComponent from "src/components/ContructionComponent"
+import PageLayout from "src/layouts/PageLayout"
 
-export const ComponentPage = () => {
+export const Component = () => {
   return (
-    <ContructionComponent />
+    <PageLayout title="Categorias - Markes Places" type="empty">
+      <ContructionComponent />
+    </PageLayout>
   )
 }

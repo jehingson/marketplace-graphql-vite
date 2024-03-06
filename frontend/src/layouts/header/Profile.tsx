@@ -4,9 +4,11 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import PlaylistAddCheckRoundedIcon from '@mui/icons-material/PlaylistAddCheckRounded';
 import useAuth from 'src/hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const { logout } = useAuth()
+  const navigate = useNavigate();
   const [anchorEl2, setAnchorEl2] = useState(null);
   const handleClick2 = (event) => {
     setAnchorEl2(event.currentTarget);
@@ -17,7 +19,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     logout()
-    window.location.reload();
+    navigate('/')
   }
   
   return (

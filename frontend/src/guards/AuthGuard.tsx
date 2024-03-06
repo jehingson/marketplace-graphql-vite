@@ -8,9 +8,6 @@ import SplashScreen from '@/components/SplashScreen';
 // import GET_SHOULD_AUTH from 'src/graphql/querys/getShouldAuth';
 // import { useQuery } from '@apollo/client';
 
-
-
-
 const AuthGuard: FC<PropsWithChildren> = ({ children }) => {
   const auth = useAuth();
   const { hasAccess, isAuthenticated } = useAccess();

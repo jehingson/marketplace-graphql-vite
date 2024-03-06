@@ -1,6 +1,4 @@
-import ContructionComponent from "src/components/ContructionComponent"
 import PageLayout from "src/layouts/PageLayout"
-import Products from '@/components/products'
 import Banner from '@/components/banner'
 import Filter from '@/components/filter'
 import Navbar from '@/components/navbar'
@@ -11,7 +9,6 @@ export const Component = () => {
       <Navbar />
        <Banner />
        <Filter />
-       <Products  />
     </PageLayout>
   )
 }
