@@ -121,6 +121,7 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
     clearErrors('password');
   };
 
+  
   return (
     <Box display="flex" alignItems="center" sx={{ height: '100%' }}>
       <Container maxWidth="sm">
