@@ -7,6 +7,7 @@ import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import ReceiptLongOutlinedIcon from '@mui/icons-material/ReceiptLongOutlined';
 import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
+import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import { useLocation } from 'react-router-dom';
 import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOutlined';
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
@@ -23,24 +24,17 @@ const SidebarItems = () => {
   const { pathname } = useLocation();
   const [menuItem, setMenuItem] = useState<any>();
 
-  console.log('user', user);
-
   useEffect(() => {
     const menuHome: any = {
       title: 'Inicio',
       items: [],
     };
 
-    const menuAnalysis: any = {
-      title: 'Análisis',
-      items: [],
-    };
-
-    const menuBranchoffice: any = {
-      title: 'Sucursal',
-      items: [],
-    };
-
+    const menuShopping: any = {
+      title: "Compras",
+      items: []
+    }
+    
     const menuInventory: any = {
       title: 'Inventario',
       items: [],
@@ -57,11 +51,28 @@ const SidebarItems = () => {
 
     menuHome.items.push({
       id: 1,
-      title: 'Dashboard',
-      path: '/dashboard',
-      icon: <DashboardOutlinedIcon />,
+      title: 'Tienda',
+      path: '/',
+      icon: <StorefrontOutlinedIcon />,
     });
 
+    menuShopping.items.push({
+      id: 11,
+      title: 'Compras',
+      path: '/orders',
+      icon: <InventoryOutlinedIcon />
+    })
+
+    if (isAdmin) {
+      menuHome.items.push({
+        id: 2,
+        title: 'Dashboard',
+        path: '/dashboard',
+        icon: <DashboardOutlinedIcon />,
+      });
+    }
+
+    // Inventario
     menuInventory.items.push({
       id: 3,
       title: 'Productos',
@@ -69,52 +80,28 @@ const SidebarItems = () => {
       icon: <InventoryOutlinedIcon />,
     });
 
-    // Inventario
     if (isAdmin || isSales) {
       menuInventory.items.push({
-        id: 2,
+        id: 4,
         title: 'Categorías',
         path: '/categories',
         icon: <CategoryOutlinedIcon />,
       });
 
       menuInventory.items.push({
-        id: 4,
+        id: 5,
         title: 'Ventas',
         path: '/sales',
         icon: <ReceiptLongOutlinedIcon />,
       });
     }
 
-    // Sucursales
-
-    menuBranchoffice.items.push({
-      id: 5,
-      title: 'Sucursales',
-      path: '/branchoffice',
-      icon: <AddBusinessOutlinedIcon />,
-    });
-
-    menuBranchoffice.items.push({
-      id: 6,
-      title: 'Multimonedas',
-      path: '/currency',
-      icon: <CurrencyExchangeOutlinedIcon />,
-    });
-
     // Usuarios
     if (isAdmin) {
       menuUsers.items.push({
-        id: 7,
-        title: 'Vendedores',
-        path: '/vendors',
-        icon: <BadgeOutlinedIcon />,
-      });
-
-      menuUsers.items.push({
-        id: 8,
-        title: 'Clientes',
-        path: '/clients',
+        id: 6,
+        title: 'Usuarios',
+        path: '/users',
         icon: <AdminPanelSettingsOutlinedIcon />,
       });
     }
@@ -123,16 +110,12 @@ const SidebarItems = () => {
       menuArray.push(menuHome);
     }
 
-    if (menuAnalysis.items.length > 0) {
-      menuArray.push(menuAnalysis);
+    if (menuShopping.items.length > 0) {
+      menuArray.push(menuShopping)
     }
 
     if (menuInventory.items.length > 0) {
       menuArray.push(menuInventory);
-    }
-
-    if (menuBranchoffice.items.length > 0) {
-      menuArray.push(menuBranchoffice);
     }
 
     if (menuUsers.items.length > 0) {

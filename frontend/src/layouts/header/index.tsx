@@ -1,19 +1,20 @@
-import React from 'react'
 import { Box, AppBar, Toolbar, styled, Stack, IconButton, Badge, Button } from '@mui/material';
 import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import SettingsBrightnessOutlinedIcon from '@mui/icons-material/SettingsBrightnessOutlined';
 import Profile from './Profile';
-import { storeSettings, restoreSettings } from 'src/contexts/settings-context';
-
+import useAuth from 'src/hooks/useAuth';
+import { Link, useLocation } from 'react-router-dom';
 
 interface PropsT {
-  toggleMobileSidebar: () => void
-  toggleSidebar: () => void
+  toggleMobileSidebar: () => void;
+  toggleSidebar: () => void;
 }
 
 const Header = ({ toggleMobileSidebar, toggleSidebar }: PropsT) => {
-
+  const { isAuthenticated } = useAuth();
+  const location = useLocation();
+  const isParamLogin = location.pathname === '/login';
+  const isParamRegister = location.pathname === '/register';
   const AppBarStyled = styled(AppBar)(({ theme }) => ({
     boxShadow: 'none',
     background: theme.palette.background.paper,
@@ -30,61 +31,76 @@ const Header = ({ toggleMobileSidebar, toggleSidebar }: PropsT) => {
     color: theme.palette.text.secondary,
   }));
 
-  const handleDarkMode = () => {
-    let settings = null;
-    try {
-      const storedData: string | null = window.localStorage.getItem('settings');
-      if (storedData) {
-        settings = JSON.parse(storedData);
-      } else {
-        settings = {
-          direction: 'ltr',
-          responsiveFontSizes: true,
-          theme: window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light'
-        };
-      }
-      // storeSettings()
-    } catch (err) {
-      console.log(err)
-    }
-    
-  }
-
   return (
     <AppBarStyled position="sticky">
       <ToolbarStyled>
-        <IconButton
-          color="inherit"
-          aria-label="menu"
-          onClick={toggleMobileSidebar}
-          sx={{
-            display: {
-              lg: "none",
-              sx: "inline"
-            }
-          }}
-        >
-          <MenuRoundedIcon />
-        </IconButton>
-        
-        
+        {isAuthenticated ? (
+          <IconButton
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleMobileSidebar}
+            sx={{
+              display: {
+                lg: 'none',
+                sx: 'inline',
+              },
+            }}
+          >
+            <MenuRoundedIcon />
+          </IconButton>
+        ) : (
+          <>
+            <Link to="/">
+              <Box display="flex" justifyContent="center" py={3}>
+                <Box
+                  component="img"
+                  sx={{
+                    height: '20px',
+                  }}
+                  src="/merck.svg"
+                  alt="logo"
+                />
+              </Box>
+            </Link>
+          </>
+        )}
+
         <Box flexGrow={1} />
+
         <Stack spacing={1} direction="row" alignItems="center">
-          <IconButton >
-            <SettingsBrightnessOutlinedIcon stroke="1.5" />
-          </IconButton>
-          <IconButton>
-            <Badge variant="dot" color="primary">
-              <NotificationsActiveRoundedIcon stroke="1.5" />
-            </Badge>
-          </IconButton>
-          <Profile />
+          {isAuthenticated ? (
+            <>
+              <IconButton>
+                <Badge variant="dot" color="primary">
+                  <NotificationsActiveRoundedIcon stroke="1.5" />
+                </Badge>
+              </IconButton>
+              <Profile />
+            </>
+          ) : (
+            <>
+              <Button
+                variant={isParamLogin ? 'contained' : 'text'}
+                color={isParamLogin ? 'primary' : 'inherit'}
+                component={Link}
+                to="/login"
+              >
+                Ingresar
+              </Button>
+              <Button
+                variant={isParamRegister ? 'contained' : 'text'}
+                color={isParamRegister ? 'primary' : 'inherit'}
+                component={Link}
+                to="/register"
+              >
+                Registrar
+              </Button>
+            </>
+          )}
         </Stack>
       </ToolbarStyled>
     </AppBarStyled>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

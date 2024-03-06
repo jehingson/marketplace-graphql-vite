@@ -123,7 +123,7 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
 
   
   return (
-    <Box display="flex" alignItems="center" sx={{ height: '100%' }}>
+    <>
       <Container maxWidth="sm">
         <Card>
           <CardContent sx={{ display: 'flex', flexDirection: 'column', p: 2 }}>
@@ -256,7 +256,7 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
           </CardContent>
         </Card>
       </Container>
-    </Box>
+    </>
   );
 };
 

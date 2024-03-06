@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, CircularProgress, Typography } from '@mui/material';
 
 const SlashScreen: FC = () => (
   <Box
@@ -18,7 +18,7 @@ const SlashScreen: FC = () => (
       zIndex: 2000,
     }}
   >
-    <Typography>Hola mundo</Typography>
+    <CircularProgress />
   </Box>
 );
 

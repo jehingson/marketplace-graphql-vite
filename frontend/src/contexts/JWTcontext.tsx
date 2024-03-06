@@ -157,7 +157,7 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
   }, []);
 
   const login = async (user: User): Promise<void> => {
-    localStorage.setItem('authToken', user.token);
+    localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('user', JSON.stringify(user));
     dispatch({
       type: 'LOGIN',
