@@ -1,15 +1,21 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-
+import { Product } from "src/types/product";
 interface Filter {
   inputValue: string;
   limit: number;
   offset: number;
 }
 
+interface  Card {
+  product: Product
+  quantity: number
+}
+
 interface ProductsState {
   filterInventory: Filter
   filterProductPublic: Filter
+  card: Card[] | null
 }
 
 const initialState: ProductsState = {
@@ -20,11 +26,12 @@ const initialState: ProductsState = {
   },
   filterProductPublic: {
     inputValue: '',
-    limit: 10,
+    limit: 12,
     offset: 0
-  }
+  },
+  card: null
 };
-
+const selectStateCard = (state:  ProductsState) => state.card;
 const { reducer, actions } = createSlice({
   name: "products_store",
   initialState,
@@ -37,10 +44,13 @@ const { reducer, actions } = createSlice({
     },
     setFilterProductPublic: (state: ProductsState, action: PayloadAction<Filter>) => {
       state.filterProductPublic = action.payload
+    },
+    setAddCard: (state: ProductsState, action: PayloadAction<Card[]>) => {
+      state.card = action.payload
     }
   },
 });
 
 export default reducer;
 
-export const { setFilterInventory } = actions;
+export const { setFilterInventory, setFilterProductPublic, setAddCard } = actions;

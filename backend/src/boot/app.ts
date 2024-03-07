@@ -99,7 +99,7 @@ export const initializeApp = async () => {
             Query.includes("register") ||
             Query.includes("login") ||
             Query.includes("googleRegister") ||
-            Query.includes("public")
+            Query.includes("productsPublic")
           ) {
             const accessToken = req.header(`x-${appShortName}-access-token`);
             try {

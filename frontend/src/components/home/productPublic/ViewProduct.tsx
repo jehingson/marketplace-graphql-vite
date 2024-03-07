@@ -3,13 +3,20 @@ import StarIcon from '@mui/icons-material/Star';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import { calculatePriceTax } from 'src/utils/calculatePricesTax';
 import { Product } from 'src/types/product';
+import CardQuantityGeneral from 'src/components/general/CardQuantityGeneral';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface Props {
   selectProduct: Product | null;
   setSelectProduct: (value: Product | null) => void;
+  handleCardProduct: (value: any) =>void
 }
 
-export default function ViewProduct({ selectProduct, setSelectProduct }: Props) {
+export default function ViewProduct({ selectProduct, setSelectProduct, handleCardProduct }: Props) {
+  const [quantity, setQuantity] = useState<number>(1);
+
+
   return (
     <Dialog open={selectProduct ? true : false} fullWidth maxWidth="sm">
       <Box
@@ -53,6 +60,13 @@ export default function ViewProduct({ selectProduct, setSelectProduct }: Props) 
             {calculatePriceTax(selectProduct?.prices ?? 0, selectProduct?.tax ?? false)} $
           </Typography>
         </Box>
+        <Box>
+          <CardQuantityGeneral
+            quantity={quantity}
+            setQuantity={setQuantity}
+            accessible={selectProduct?.quantity ?? 0}
+          />
+        </Box>
         <Box sx={{ display: 'flex', justifyContent: 'end', gap: 2 }}>
           <Button color="inherit" variant="outlined" onClick={() => setSelectProduct(null)}>
             Cerrar
@@ -61,6 +75,14 @@ export default function ViewProduct({ selectProduct, setSelectProduct }: Props) 
             variant="contained" 
             endIcon={<AddShoppingCartOutlinedIcon />}
             disabled={(selectProduct?.quantity ?? 0) < 1 ? true : false}
+            onClick={() => {
+              handleCardProduct({
+                product: selectProduct,
+                quantity
+              })
+              toast.success("¡Producto cargado al carrito con éxito!")
+              setQuantity(1)
+            }}
           >
             Comprar
           </Button>

@@ -1,11 +1,18 @@
-import React from 'react'
 import ProductPublic from './productPublic'
 import useProductsPublic from 'src/hooks/useProductsPublic'
+import { useSelector } from 'src/store'
 
 export default function Home() {
-  const { products, loading  } = useProductsPublic()
+  const { filterProductPublic: filter, card } = useSelector((store) => store.product_state)
+  const { products, amount, loading  } = useProductsPublic(filter)
 
   return (
-    <ProductPublic products={products} loading={loading} />
+    <ProductPublic 
+      card={card}
+      products={products} 
+      amount={amount} 
+      loading={loading} 
+      filter={filter} 
+    />
   )
 }

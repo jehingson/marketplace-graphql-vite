@@ -8,12 +8,12 @@ export const PublicTypeDyfs = gql`
   }
 
   extend type Query {
-    products(inputValue: String, limit: Int!, offset: Int!): ResultProducts
+    productsPublic(inputValue: String, limit: Int!, offset: Int!): ResultProducts
   }
 `;
 
 export const PublicResolvers = {
   Query: {
-    products: (_, args) => publicService.products(args)
+    productsPublic: (_, args) => publicService.products(args)
   },
 };
