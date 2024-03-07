@@ -8,13 +8,17 @@ interface Filter {
 }
 
 interface ProductsState {
-  value: string;
   filterInventory: Filter
+  filterProductPublic: Filter
 }
 
 const initialState: ProductsState = {
-  value: "",
   filterInventory: {
+    inputValue: '',
+    limit: 10,
+    offset: 0
+  },
+  filterProductPublic: {
     inputValue: '',
     limit: 10,
     offset: 0
@@ -28,15 +32,15 @@ const { reducer, actions } = createSlice({
     resetStore: () => {
       return initialState;
     },
-    setValue: (state: ProductsState, action: PayloadAction<string>) => {
-      state.value = action.payload;
-    },
     setFilterInventory: (state: ProductsState, action: PayloadAction<Filter>) => {
       state.filterInventory = action.payload
+    },
+    setFilterProductPublic: (state: ProductsState, action: PayloadAction<Filter>) => {
+      state.filterProductPublic = action.payload
     }
   },
 });
 
 export default reducer;
 
-export const { setValue, setFilterInventory } = actions;
+export const { setFilterInventory } = actions;

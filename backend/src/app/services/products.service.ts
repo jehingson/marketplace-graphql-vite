@@ -10,6 +10,9 @@ export class ProductsService {
     console.log("limit", limit);
     console.log("offset", offset);
     let result = [];
+
+    console.log("account", account);
+
     try {
       const resposity = AppDataSource.getRepository(Products);
 
@@ -22,7 +25,6 @@ export class ProductsService {
             {
               name: `%${inputValue}%`,
               sku: `%${inputValue}%`,
-              accountId: account.id,
             }
           )
           .skip(offset * limit)

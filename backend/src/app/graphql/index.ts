@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 import { AccountsResolvers, AccountsTypeDefs } from "./accounts.graphql";
 import { AppResolvers, AppTypeDefs } from "./app.graphql";
 import { ProductResolvers, ProductTypeDyfs } from "./products.graphql";
-
+import { PublicResolvers, PublicTypeDyfs } from "./public.graphql";
 const RootTypeDefs = gql`
   scalar JSON
 
@@ -25,10 +25,12 @@ export const typeDefs = [
   AppTypeDefs,
   AccountsTypeDefs,
   ProductTypeDyfs,
+  PublicTypeDyfs
 ];
 
 export const resolvers = [
   AccountsResolvers, 
   AppResolvers, 
-  ProductResolvers
+  ProductResolvers,
+  PublicResolvers
 ];
