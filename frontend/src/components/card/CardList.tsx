@@ -11,15 +11,27 @@ import {
   Typography,
 } from '@mui/material';
 import useCardCount from 'src/hooks/useCardCount';
+import { setPymentModal } from 'src/slices/products';
+import { useDispatch } from 'src/store';
 import { calculatePriceTax } from 'src/utils/calculatePricesTax';
 
-export default function CardList({ handleClose }: { handleClose: () => void }) {
-  const { card, totalPrice } = useCardCount();
+export default function CardList({
+  handleClose,
+  verify = false,
+}: {
+  handleClose: () => void;
+  verify?: boolean;
+}) {
+  const { count, card, totalPrice } = useCardCount();
   // const handleDeleteCard = (product) => {};
-
+  const dispatch = useDispatch();
   // const handleSumCard = (product, quantity) => {};
 
   // const handleRestCard = (product, quantity) => {};
+
+  const handlePyment = () => {
+    
+  }
 
   return (
     <Box>
@@ -85,14 +97,51 @@ export default function CardList({ handleClose }: { handleClose: () => void }) {
               </TableBody>
             </Table>
           </TableContainer>
-          <Box sx={{ px: 5, pt: 10, display: 'flex', justifyContent: "space-between", alignItems: "center" }}>
-            <Typography>Total:</Typography>
-            <Typography component="span" variant="h4">
-              {totalPrice} $
-            </Typography>
+          <Box>
+            <Box
+              sx={{
+                px: 5,
+                mt: 4,
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+            >
+              <Typography>Cantidad Producto:</Typography>
+              <Typography component="span" variant="h4">
+                {count}
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                px: 5,
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+            >
+              <Typography>Total $:</Typography>
+              <Typography component="span" variant="h4" color="indigo">
+                {totalPrice}
+              </Typography>
+            </Box>
           </Box>
-          <Box px={5} pb={10}>
-            <Button variant='contained' fullWidth>Comprar (Pagar)</Button>
+
+          <Box px={5} pb={2}>
+            <Button
+              onClick={() => {
+                if (!verify) {
+                  dispatch(setPymentModal(true));
+                  handleClose();
+                } else {
+                  handlePyment()
+                }
+              }}
+              variant="contained"
+              fullWidth
+            >
+              Comprar (Pagar)
+            </Button>
           </Box>
         </>
       ) : (

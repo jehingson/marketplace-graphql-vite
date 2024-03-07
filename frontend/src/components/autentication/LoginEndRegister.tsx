@@ -28,7 +28,7 @@ interface FormData {
   iv: string;
   username?: string;
   password: string;
-  confirmPassword: string
+  confirmPassword: string;
   email: string;
 }
 
@@ -37,10 +37,16 @@ const defaultValues: FormData = {
   password: '',
   username: '',
   email: '',
-  confirmPassword: ''
+  confirmPassword: '',
 };
 
-const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) => {
+const LoginEndRegister = ({
+  typeRegister = false,
+  modal,
+}: {
+  typeRegister?: boolean;
+  modal?: boolean;
+}) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
   const resolver = useMemo(() => yupResolver(validationLogin(typeRegister)), []);
@@ -48,33 +54,33 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
 
   const [register, { loading: loadingRegister }] = useMutation(REGISTER_REQUEST, {
     onCompleted: (data) => {
-      const { register = null } = data
+      const { register = null } = data;
       if (register) {
-        toast.success('Operación exitosa.')
+        toast.success('Operación exitosa.');
         setTimeout(() => {
           loginStorage(register);
-        }, 2000)
+        }, 2000);
       }
     },
     onError: (err) => {
-      const message = err?.message ?? 'Algo salió mal, valué a intentarlo.'
-      toast.error( message)
-    }
-  })
+      const message = err?.message ?? 'Algo salió mal, valué a intentarlo.';
+      toast.error(message);
+    },
+  });
 
   const [login, { loading }] = useMutation(LOGIN_REQUEST, {
     onCompleted: (data) => {
       const { login = null } = data;
       if (login) {
-        toast.success('Operación exitosa.')
+        toast.success('Operación exitosa.');
         setTimeout(() => {
           loginStorage(login);
-        }, 2000)
+        }, 2000);
       }
     },
     onError: (err) => {
-      const message = err?.message ?? 'Algo salió mal, valué a intentarlo.'
-      toast.error(message)
+      const message = err?.message ?? 'Algo salió mal, valué a intentarlo.';
+      toast.error(message);
     },
   });
 
@@ -95,7 +101,7 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
 
     try {
       if (typeRegister) {
-        delete input.confirmPassword
+        delete input.confirmPassword;
         await register({
           variables: {
             ...input,
@@ -108,8 +114,6 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
           },
         });
       }
-
-   
     } catch (err) {
       console.info(err);
     }
@@ -121,7 +125,6 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
     clearErrors('password');
   };
 
-  
   return (
     <>
       <Container maxWidth="sm">
@@ -219,7 +222,10 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
-                            <IconButton edge="end" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                            <IconButton
+                              edge="end"
+                              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            >
                               {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                             </IconButton>
                           </InputAdornment>
@@ -238,21 +244,23 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
                 variant="contained"
                 onClick={handleSubmit(submitHandler)}
               >
-                {typeRegister ? "Registrar cuenta" : "Iniciar Sesión"}
+                {typeRegister ? 'Registrar cuenta' : 'Iniciar Sesión'}
               </LoadingButton>
             </Box>
             <br />
-            <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-              {typeRegister ? (
-                <Link to="/login" style={{ textDecoration: 'none' }}>
-                  <Typography>¿Quieres iniciar sesión? ¡Haz clic aquí!</Typography>
-                </Link>
-              ) : (
-                <Link to="/register" style={{ textDecoration: 'none' }}>
-                  <Typography>Registrar cuenta - ¡Haz clic aquí!</Typography>
-                </Link>
-              )}
-            </Box>
+            {!modal && (
+              <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+                {typeRegister ? (
+                  <Link to="/login" style={{ textDecoration: 'none' }}>
+                    <Typography>¿Quieres iniciar sesión? ¡Haz clic aquí!</Typography>
+                  </Link>
+                ) : (
+                  <Link to="/register" style={{ textDecoration: 'none' }}>
+                    <Typography>Registrar cuenta - ¡Haz clic aquí!</Typography>
+                  </Link>
+                )}
+              </Box>
+            )}
           </CardContent>
         </Card>
       </Container>

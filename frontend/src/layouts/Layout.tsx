@@ -5,6 +5,7 @@ import Header from './header';
 import Sidebar from './sidebar';
 import useAuth from 'src/hooks/useAuth';
 import DrawerCard from 'src/components/card/DrawerCard';
+import Pyment from 'src/components/pyment';
 
 const MainWrapper = styled('div')(() => ({
   display: 'flex',
@@ -40,6 +41,7 @@ const Layout = () => {
           onSidebarClose={() => setMobileSidebarOpen(false)}
         />
       )}
+      <Pyment />
       <PageWrapper>
         {/* ------------------------------------------- */}
         {/* Header */}
