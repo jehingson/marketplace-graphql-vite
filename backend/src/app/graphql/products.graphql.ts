@@ -9,6 +9,7 @@ export const ProductTypeDyfs = gql`
     image: String
     sku: String
     quantity: Float
+    description: String
     tax: Boolean
     status: String
     createdAt: String
@@ -37,8 +38,6 @@ export const ProductTypeDyfs = gql`
       tax: Boolean
     ): operationResult
   }
-
-
 `;
 
 export const ProductResolvers = {

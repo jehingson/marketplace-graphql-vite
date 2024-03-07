@@ -17,6 +17,8 @@ export default function ContructionComponent() {
         src="/development.png"
         sx={{
           height: '60vh',
+          width: '100%',
+          objectFit: "contain"
         }}
       />
       <Typography variant="h3" color="textSecondary">

@@ -53,7 +53,7 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
         toast.success('Operación exitosa.')
         setTimeout(() => {
           loginStorage(register);
-        }, 1000)
+        }, 2000)
       }
     },
     onError: (err) => {
@@ -69,7 +69,7 @@ const LoginEndRegister = ({ typeRegister = false }: { typeRegister?: boolean }) 
         toast.success('Operación exitosa.')
         setTimeout(() => {
           loginStorage(login);
-        }, 1000)
+        }, 2000)
       }
     },
     onError: (err) => {
