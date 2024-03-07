@@ -83,11 +83,11 @@ const Sidebar = ({ isSidebarOpen, isMobileSidebarOpen, onSidebarClose }: Props) 
       {/* ------------------------------------------- */}
       {/* Logo */}
       {/* ------------------------------------------- */}
-      <Box px={2} mt={1}>
+      <Box display="flex" justifyContent="center" mt={2}>
         <Box
           component="img"
           sx={{
-            height: '15px',
+            height: '20px',
           }}
           src="/merck.svg"
           alt="logo"

@@ -41,10 +41,7 @@ export default function ViewProduct({ selectProduct, setSelectProduct, handleCar
       <Box p={2}>
         <Typography variant="h5">{selectProduct?.name ?? ''}</Typography>
         <Typography variant="body1" color="textSecondary">
-          {selectProduct?.description} Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          Eligendi vero unde aperiam cupiditate sequi recusandae provident dicta sapiente harum
-          reprehenderit, id asperiores excepturi ad debitis, deleniti reiciendis facilis atque
-          libero.
+          {selectProduct?.description}
         </Typography>
         <Typography color="primary" variant='h6'>
           <Typography component="span">Disponibles:</Typography> {selectProduct?.quantity ?? 0}

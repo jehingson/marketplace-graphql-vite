@@ -4,6 +4,7 @@ import { styled, Container, Box } from '@mui/material';
 import Header from './header';
 import Sidebar from './sidebar';
 import useAuth from 'src/hooks/useAuth';
+import DrawerCard from 'src/components/card/DrawerCard';
 
 const MainWrapper = styled('div')(() => ({
   display: 'flex',
@@ -24,6 +25,7 @@ const Layout = () => {
   const { isAuthenticated } = useAuth();
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [isCardOpen, setCardOpen] = useState(false);
 
   return (
     <MainWrapper>
@@ -38,7 +40,6 @@ const Layout = () => {
           onSidebarClose={() => setMobileSidebarOpen(false)}
         />
       )}
-
       <PageWrapper>
         {/* ------------------------------------------- */}
         {/* Header */}
@@ -46,7 +47,9 @@ const Layout = () => {
         <Header
           toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
           toggleMobileSidebar={() => setMobileSidebarOpen(true)}
+          setCardOpen={setCardOpen}
         />
+        <DrawerCard isCardOpen={isCardOpen} handleClose={() => setCardOpen(false)} />
         {/* ------------------------------------------- */}
         {/* Page Route */}
         {/* ------------------------------------------- */}

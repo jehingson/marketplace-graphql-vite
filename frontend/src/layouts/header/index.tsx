@@ -3,15 +3,18 @@ import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsAct
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Profile from './Profile';
 import useAuth from 'src/hooks/useAuth';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import { Link, useLocation } from 'react-router-dom';
+import useCardCount from 'src/hooks/useCardCount';
 
 interface PropsT {
   toggleMobileSidebar: () => void;
   toggleSidebar: () => void;
+  setCardOpen: (value: boolean) => void;
 }
-
-const Header = ({ toggleMobileSidebar, toggleSidebar }: PropsT) => {
+const Header = ({ toggleMobileSidebar, toggleSidebar, setCardOpen }: PropsT) => {
   const { isAuthenticated } = useAuth();
+  const { count } = useCardCount();
   const location = useLocation();
   const isParamLogin = location.pathname === '/login';
   const isParamRegister = location.pathname === '/register';
@@ -66,8 +69,15 @@ const Header = ({ toggleMobileSidebar, toggleSidebar }: PropsT) => {
         )}
 
         <Box flexGrow={1} />
-
         <Stack spacing={1} direction="row" alignItems="center">
+          {!isParamLogin && !isParamRegister && (
+            <IconButton onClick={() => setCardOpen(true)}>
+              <Badge variant="standard" color="primary" badgeContent={count}>
+                <ShoppingCartRoundedIcon stroke="1.5" />
+              </Badge>
+            </IconButton>
+          )}
+
           {isAuthenticated ? (
             <>
               <IconButton>

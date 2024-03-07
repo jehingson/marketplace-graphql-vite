@@ -44,10 +44,7 @@ export default function ItemProduct({ product, setSelectProduct, handleCardProdu
         </IconButton>
       </Box>
       <Box p={2}>
-        <Typography variant="h5">{product.name}</Typography>
-        <Typography
-          variant="body1"
-          color="textSecondary"
+        <Typography variant="h5"
           sx={{
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
@@ -55,15 +52,23 @@ export default function ItemProduct({ product, setSelectProduct, handleCardProdu
             WebkitLineClamp: 2,
             textOverflow: 'ellipsis',
           }}
+        >{product.name}</Typography>
+        <Typography
+          variant="body1"
+          color="textSecondary"
+          sx={{
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            WebkitLineClamp: 3,
+            textOverflow: 'ellipsis',
+          }}
         >
-          {product.description} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
-          vero unde aperiam cupiditate sequi recusandae provident dicta sapiente harum
-          reprehenderit, id asperiores excepturi ad debitis, deleniti reiciendis facilis atque
-          libero.
+          {product.description}
         </Typography>
-        {/* <Typography color="primary" variant="h6">
+        <Typography color="primary" variant="h6">
           <Typography component="span">Disponibles:</Typography> {product?.quantity ?? 0}
-        </Typography> */}
+        </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <StarIcon color="warning" fontSize="small" />
