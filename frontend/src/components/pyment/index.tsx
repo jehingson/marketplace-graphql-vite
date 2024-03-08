@@ -8,14 +8,15 @@ import { setPymentModal } from 'src/slices/products';
 
 export default function Pyment() {
   const auth = useAuth();
-  const dispatch = useDispatch()
+  const { user } = auth
+  const dispatch = useDispatch();
   const { isAuthenticated } = auth;
   const [register, setRegister] = useState<boolean>(false);
   const { pymentModal } = useSelector((store) => store.product_state);
 
   const handleClose = () => {
-    dispatch(setPymentModal(false))
-  }
+    dispatch(setPymentModal(false));
+  };
 
   return (
     <Dialog open={pymentModal} fullWidth maxWidth="sm">
@@ -29,7 +30,7 @@ export default function Pyment() {
             </Typography>
             <LoginEndRegister modal typeRegister={register} />
             <Box pt={2} px={2} display="flex" justifyContent="end">
-              <Button onClick={handleClose} color='inherit'>
+              <Button onClick={handleClose} color="inherit">
                 Cancelar
               </Button>
               <Button onClick={() => setRegister(!register)}>
@@ -41,9 +42,14 @@ export default function Pyment() {
           </>
         ) : (
           <>
-            <CardList handleClose={handleClose} />
+            <Typography px={2} py={3} color="textSecondary" variant='body2'>
+              ¡Hola <Typography component="span" variant='h5' color="primary">{user?.username ?? ""}</Typography>! ¿Listo para finalizar tu compra? No olvides revisar tu lista de carrito para
+              asegurarte de que tienes todos los productos que deseas. ¡Es momento de pagar y
+              disfrutar de tus compras! ¡Gracias por elegirnos!
+            </Typography>
+            <CardList handleClose={handleClose} verify />
             <Box pt={2} px={2} display="flex" justifyContent="end">
-              <Button onClick={handleClose} color='inherit'>
+              <Button onClick={handleClose} color="inherit">
                 Cancelar
               </Button>
             </Box>

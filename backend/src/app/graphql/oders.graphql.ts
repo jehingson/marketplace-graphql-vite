@@ -15,7 +15,7 @@ export const OrdersTypeDyfs = gql`
 
   extend type Mutation {
     createOrder(
-      productsId: [Int]!
+      order: String!
     ): operationResult
   }
 `;

@@ -47,7 +47,7 @@ const { reducer, actions } = createSlice({
     setFilterProductPublic: (state: ProductsState, action: PayloadAction<Filter>) => {
       state.filterProductPublic = action.payload;
     },
-    setAddCard: (state: ProductsState, action: PayloadAction<Card[]>) => {
+    setAddCard: (state: ProductsState, action: PayloadAction<Card[] | null>) => {
       state.card = action.payload;
     },
     setPymentModal: (state: ProductsState, action: PayloadAction<boolean>) => {

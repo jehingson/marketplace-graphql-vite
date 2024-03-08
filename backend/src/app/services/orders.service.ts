@@ -9,29 +9,34 @@ import { Sales } from "../models/sales.modal";
 @Service()
 export class OrderService {
 
-  calculateTax = (prices: number, tax: boolean) => {
-    if (!tax) return prices
-    return (prices + (prices * 0.12))
+  calculateTax = (prices: number, tax: boolean, quantity: number) => {
+    const priceTax = prices * quantity
+    if (!tax) return priceTax 
+    return (priceTax + (priceTax * 0.12))
   }
 
-  calculateTotalOrder = (products) => {
+  calculateTotalOrder = (products, value) => {
     let totalPrice = 0
     products.map((product) => {
-      totalPrice += this.calculateTax(product.prices, product.tax)
+      const order = value.find((itm) => itm.productId === product.id)
+      totalPrice += this.calculateTax(product.prices, product.tax, order?.quantity ?? 1)
       return product
     })
     return totalPrice
   }
 
-  createOrder = async ({ productsId }, account) => {
+  createOrder = async ({ order }, account) => {
     try {
+      console.log("order", order)
+      const value = JSON.parse(order)
+      console.log(value)
       const productRepository = AppDataSource.getRepository(Products)
       const orderRepository = AppDataSource.getRepository(Orders)
       const saleRepository = AppDataSource.getRepository(Sales)
 
       const products = await productRepository.find({
         where: {
-          id: In(productsId)
+          id: In(value.map((ord: any) => ord.productId))
         }
       })
 
@@ -41,7 +46,7 @@ export class OrderService {
         );
       }
 
-      const total = this.calculateTotalOrder(products)
+      const total = this.calculateTotalOrder(products, value)
 
       const newOders = new Orders()
       newOders.total = total
@@ -51,8 +56,10 @@ export class OrderService {
 
       const newSales = []
       products.map((product) => {
+        const order = value.find((itm) => itm.productId === product.id)
         const sale = new Sales()
-        sale.prices = this.calculateTax(product.prices, product.tax)
+        sale.quantity = order.quantity
+        sale.prices = this.calculateTax(product.prices, product.tax, order.quantity)
         sale.order = insertedOrder
         sale.product = product
         newSales.push(sale)

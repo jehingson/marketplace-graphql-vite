@@ -12,6 +12,9 @@ export class Sales extends BaseEntity {
   @Column({ type: "float" })
   prices: number
 
+  @Column()
+  quantity: number
+
   @ManyToOne(() => Products, (product) => product.sales)
   product: Products;
 

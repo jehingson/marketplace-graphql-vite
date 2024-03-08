@@ -12,7 +12,7 @@ const useCardCount = () => {
   let totalPrice = 0;
   card.map((itm) => {
     count += itm.quantity;
-    totalPrice += calculatePriceTax(itm.product.prices, itm.product.tax);
+    totalPrice += calculatePriceTax(itm.product.prices, itm.product.tax, itm.quantity);
     return itm;
   });
   return {

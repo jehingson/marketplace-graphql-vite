@@ -31,10 +31,8 @@ export default function DrawerCard({ isCardOpen, handleClose  }: Props) {
             alt="logo"
           />
         </Box>
-
         <Divider />  
-
-        <CardList handleClose={handleClose} verify />
+        <CardList handleClose={handleClose} />
       </Box>
     </Drawer>
   );

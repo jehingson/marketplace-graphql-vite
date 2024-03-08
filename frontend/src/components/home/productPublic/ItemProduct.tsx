@@ -1,11 +1,10 @@
 import { Box, Button, IconButton, Paper, TextField, Typography } from '@mui/material';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import { Product } from 'src/types/product';
-import { calculatePriceTax } from 'src/utils/calculatePricesTax';
+import { calculatePriceTax, formatNumberCurrency } from 'src/utils/calculatePricesTax';
 import StarIcon from '@mui/icons-material/Star';
 import PreviewOutlinedIcon from '@mui/icons-material/PreviewOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import CardQuantityGeneral from 'src/components/general/CardQuantityGeneral';
@@ -77,7 +76,7 @@ export default function ItemProduct({ product, setSelectProduct, handleCardProdu
             <StarIcon color="warning" fontSize="small" />
           </Box>
           <Typography variant="h4" color="indigo">
-            {calculatePriceTax(product.prices, product.tax)} $
+            {formatNumberCurrency(calculatePriceTax(product.prices, product.tax, quantity))}
           </Typography>
         </Box>
         <Box>

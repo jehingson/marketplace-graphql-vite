@@ -1,7 +1,7 @@
 import { Box, Button, Dialog, Typography } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
-import { calculatePriceTax } from 'src/utils/calculatePricesTax';
+import { calculatePriceTax, formatNumberCurrency } from 'src/utils/calculatePricesTax';
 import { Product } from 'src/types/product';
 import CardQuantityGeneral from 'src/components/general/CardQuantityGeneral';
 import { useState } from 'react';
@@ -12,6 +12,7 @@ interface Props {
   setSelectProduct: (value: Product | null) => void;
   handleCardProduct: (value: any) =>void
 }
+
 
 export default function ViewProduct({ selectProduct, setSelectProduct, handleCardProduct }: Props) {
   const [quantity, setQuantity] = useState<number>(1);
@@ -54,7 +55,7 @@ export default function ViewProduct({ selectProduct, setSelectProduct, handleCar
             <StarIcon color="warning" fontSize="small" />
           </Box>
           <Typography variant="h4" color="indigo">
-            {calculatePriceTax(selectProduct?.prices ?? 0, selectProduct?.tax ?? false)} $
+            {formatNumberCurrency(calculatePriceTax(selectProduct?.prices ?? 0, selectProduct?.tax ?? false, quantity))}
           </Typography>
         </Box>
         <Box>

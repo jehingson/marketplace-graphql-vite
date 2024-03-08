@@ -1,3 +1,4 @@
+import { useMutation } from '@apollo/client';
 import {
   Box,
   Button,
@@ -10,10 +11,12 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
+import toast from 'react-hot-toast';
+import CREATE_ORDER from 'src/graphql/mutations/pyment/createOrder';
 import useCardCount from 'src/hooks/useCardCount';
-import { setPymentModal } from 'src/slices/products';
+import { setAddCard, setPymentModal } from 'src/slices/products';
 import { useDispatch } from 'src/store';
-import { calculatePriceTax } from 'src/utils/calculatePricesTax';
+import { calculatePriceTax, formatNumberCurrency } from 'src/utils/calculatePricesTax';
 
 export default function CardList({
   handleClose,
@@ -22,6 +25,22 @@ export default function CardList({
   handleClose: () => void;
   verify?: boolean;
 }) {
+  const [createOrder] = useMutation(CREATE_ORDER, {
+    onCompleted: (data) => {
+      const { createOrder = null } = data;
+      if (createOrder) {
+        toast.success('Operación exitosa.');
+        setTimeout(() => {
+          dispatch(setAddCard(null));
+          dispatch(setPymentModal(false));
+        }, 500);
+      }
+    },
+    onError: (err) => {
+      const message = err?.message ?? 'Algo salió mal, valué a intentarlo.';
+      toast.error(message);
+    },
+  });
   const { count, card, totalPrice } = useCardCount();
   // const handleDeleteCard = (product) => {};
   const dispatch = useDispatch();
@@ -29,9 +48,21 @@ export default function CardList({
 
   // const handleRestCard = (product, quantity) => {};
 
-  const handlePyment = () => {
-    
-  }
+  const handlePyment = async () => {
+    const order: any = []
+    card?.map((itm) => {
+      order.push({
+        productId: itm.product.id,
+        quantity: itm.quantity
+      })
+      return itm
+    })
+    await createOrder({
+      variables: {
+        order: JSON.stringify(order),
+      },
+    });
+  };
 
   return (
     <Box>
@@ -80,16 +111,16 @@ export default function CardList({
                             textOverflow: 'ellipsis',
                           }}
                         >
-                          {product.name} Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                          {product.name}
                         </Typography>
                       </TableCell>
                       <TableCell sx={{ p: 0, pr: 2 }} align="center">
-                        <Typography variant="body1" sx={{ fontWeight: 'bold' }} color="indigo">
-                          {calculatePriceTax(product.prices, product.tax)}
+                        <Typography variant="body2" sx={{ fontWeight: 'bold' }} color="indigo">
+                          {formatNumberCurrency(calculatePriceTax(product.prices, product.tax, quantity))}
                         </Typography>
                       </TableCell>
                       <TableCell align="center">
-                        <Typography variant="h6">{quantity}</Typography>
+                        <Typography variant="body2" sx={{ fontWeight: 'bold' }}>{quantity}</Typography>
                       </TableCell>
                     </TableRow>
                   );
@@ -108,7 +139,7 @@ export default function CardList({
               }}
             >
               <Typography>Cantidad Producto:</Typography>
-              <Typography component="span" variant="h4">
+              <Typography component="span" variant="h6">
                 {count}
               </Typography>
             </Box>
@@ -120,9 +151,9 @@ export default function CardList({
                 alignItems: 'center',
               }}
             >
-              <Typography>Total $:</Typography>
+              <Typography>Total:</Typography>
               <Typography component="span" variant="h4" color="indigo">
-                {totalPrice}
+                {formatNumberCurrency(totalPrice)}
               </Typography>
             </Box>
           </Box>
@@ -130,11 +161,11 @@ export default function CardList({
           <Box px={5} pb={2}>
             <Button
               onClick={() => {
-                if (!verify) {
+                if (verify) {
+                  handlePyment();
+                } else {
                   dispatch(setPymentModal(true));
                   handleClose();
-                } else {
-                  handlePyment()
                 }
               }}
               variant="contained"

@@ -59,7 +59,7 @@ const LoginEndRegister = ({
         toast.success('Operación exitosa.');
         setTimeout(() => {
           loginStorage(register);
-        }, 2000);
+        }, 1000);
       }
     },
     onError: (err) => {
