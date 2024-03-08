@@ -5,20 +5,20 @@ import { Products } from '../models/products.model';
 
 @Service()
 export class PublicService {
-  products = async ({ limit, offset, inputValue}) => {
-    console.log("inputValue", inputValue);
-    console.log("limit", limit);
-    console.log("offset", offset);
+  products = async ({ limit, offset, inputValue, range }) => {
+    console.log("prices", range)
     try {
       const resposity = AppDataSource.getRepository(Products);
         const result = await resposity
           .createQueryBuilder("products")
           .leftJoinAndSelect("products.account", "account")
           .where(
-            `(products.name LIKE :name OR products.sku LIKE :sku)`,
+            `(products.name LIKE :name OR products.sku LIKE :sku) AND products.prices BETWEEN :minPrice AND :maxPrice`,
             {
               name: `%${inputValue}%`,
               sku: `%${inputValue}%`,
+              minPrice: `${range[0]}`,
+              maxPrice: `${range[1]}`
             }
           )
           .skip(offset * limit)

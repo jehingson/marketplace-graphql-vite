@@ -65,9 +65,13 @@ export default function ItemProduct({ product, setSelectProduct, handleCardProdu
         >
           {product.description}
         </Typography>
-        <Typography color="primary" variant="h6">
-          <Typography component="span">Disponibles:</Typography> {product?.quantity ?? 0}
-        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between", justifyItems: "center" }}>
+          <Typography color="primary" variant="body2">
+            Disponibles: <Typography component="span">{product?.quantity ?? 0}</Typography> 
+          </Typography>
+          <Typography variant='body2' sx={{ fontWeight: "bold"}}>{product?.sku ?? ""}</Typography>
+        </Box>
+       
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <StarIcon color="warning" fontSize="small" />

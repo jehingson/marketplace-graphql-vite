@@ -20,6 +20,7 @@ interface ProductsState {
   filterSales: Filter;
   card: Card[] | null;
   pymentModal: boolean;
+  range: number[]
 }
 
 const initialState: ProductsState = {
@@ -45,6 +46,7 @@ const initialState: ProductsState = {
   },
   card: null,
   pymentModal: false,
+  range: [100, 3000]
 };
 
 const { reducer, actions } = createSlice({
@@ -72,6 +74,9 @@ const { reducer, actions } = createSlice({
     setPymentModal: (state: ProductsState, action: PayloadAction<boolean>) => {
       state.pymentModal = action.payload;
     },
+    setRange: (state: ProductsState, action: PayloadAction<number[]>) => {
+      state.range = action.payload;
+    },
   },
 });
 
@@ -83,4 +88,5 @@ export const {
   setFilterOrder,
   setAddCard,
   setPymentModal,
+  setRange
 } = actions;

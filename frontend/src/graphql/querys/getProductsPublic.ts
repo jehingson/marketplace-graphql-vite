@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 const GET_PRODUCTS_PUBLIC = gql`
-  query ProductsPublic($limit: Int!, $offset: Int!, $inputValue: String) {
-    productsPublic(limit: $limit, offset: $offset, inputValue: $inputValue) {
+  query ProductsPublic($limit: Int!, $offset: Int!, $inputValue: String, $range: [Int]) {
+    productsPublic(limit: $limit, offset: $offset, inputValue: $inputValue, range: $range) {
       amount
       result {
         account {

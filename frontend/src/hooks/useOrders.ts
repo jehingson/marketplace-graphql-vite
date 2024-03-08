@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { useMemo } from 'react';
 import GET_ORDERS from 'src/graphql/querys/getOrders';
-import GET_PRODUCTS_PUBLIC from 'src/graphql/querys/getProductsPublic';
 import { Product } from 'src/types/product';
 import { User } from 'src/types/user';
 

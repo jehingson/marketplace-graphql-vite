@@ -13,7 +13,6 @@ export default function Products() {
   const [show, setShow] = useState(false);
   const selecteProduct = {};
 
-
   if (role !== 'admin' && role !== 'sales') {
     return <RoleSales />;
   }

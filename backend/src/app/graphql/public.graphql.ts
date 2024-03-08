@@ -8,7 +8,7 @@ export const PublicTypeDyfs = gql`
   }
 
   extend type Query {
-    productsPublic(inputValue: String, limit: Int!, offset: Int!): ResultProducts
+    productsPublic(inputValue: String, limit: Int!, offset: Int!, range: [Int]): ResultProducts
   }
 `;
 

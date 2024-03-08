@@ -14,6 +14,7 @@ interface Filter {
   inputValue: string;
   limit: number;
   offset: number;
+  range: number[]
 }
 
 const useProductsPublic = (filter: Filter) => {
