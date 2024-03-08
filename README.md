@@ -79,9 +79,11 @@ Este proyecto es un Marketplace desarrollado con Node.js, TypeScript, TypeORM y 
 ```
 
 
-## Ambiente de Producción (Testing) 
+# Ambiente de Producción (Testing) 
  
 El código en un ambiente de producción (testing) se encuentra disponible en la siguiente URL: [clics](https://master.d1qpmdwepauizz.amplifyapp.com/) 
+## Nota: 
+ El tiempo de carga de una página web puede verse afectado por que el servidor es gratuito. debes refrescar y esperar un poco si a la primar no te trae datos la aplicacion.
  
 Este ambiente de producción (testing) puede ser utilizado para probar la funcionalidad del proyecto en un entorno controlado antes de implementarlo en producción. ¡Asegúrate de realizar pruebas exhaustivas para garantizar un rendimiento óptimo! 
  
