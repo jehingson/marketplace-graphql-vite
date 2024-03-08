@@ -3,6 +3,7 @@ import { Status } from "../enum/status.enum";
 import { Roles } from "../enum/roles.enum";
 import { AccountsToken } from "./accounts-token.model";
 import { Products } from "./products.model";
+import { Orders } from "./orders.modal";
 
 
 
@@ -49,5 +50,8 @@ export class Accounts extends BaseEntity {
 
   @OneToMany(() => Products, product => product.account)
   products: Products[];
+
+  @OneToMany(() => Orders, order => order.account)
+  orders: Orders[];
 
 }

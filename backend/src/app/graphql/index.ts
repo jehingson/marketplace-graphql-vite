@@ -3,6 +3,8 @@ import { AccountsResolvers, AccountsTypeDefs } from "./accounts.graphql";
 import { AppResolvers, AppTypeDefs } from "./app.graphql";
 import { ProductResolvers, ProductTypeDyfs } from "./products.graphql";
 import { PublicResolvers, PublicTypeDyfs } from "./public.graphql";
+import { OrdersResolvers, OrdersTypeDyfs } from "./oders.graphql";
+
 const RootTypeDefs = gql`
   scalar JSON
 
@@ -25,12 +27,14 @@ export const typeDefs = [
   AppTypeDefs,
   AccountsTypeDefs,
   ProductTypeDyfs,
-  PublicTypeDyfs
+  PublicTypeDyfs,
+  OrdersTypeDyfs,
 ];
 
 export const resolvers = [
-  AccountsResolvers, 
-  AppResolvers, 
+  AccountsResolvers,
+  AppResolvers,
   ProductResolvers,
-  PublicResolvers
+  PublicResolvers,
+  OrdersResolvers,
 ];

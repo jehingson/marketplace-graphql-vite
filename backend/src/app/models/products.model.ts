@@ -4,11 +4,14 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { Status } from "../enum/status.enum";
 import { Accounts } from "./accounts.model";
+import { Sales } from "./sales.modal";
+
 
 @Entity()
 export class Products extends BaseEntity {
@@ -36,6 +39,9 @@ export class Products extends BaseEntity {
   @Column({ default: false })
   tax: boolean;
 
+  @ManyToOne(() => Accounts, (account) => account.products)
+  account: Accounts;
+
   @Column({
     type: "enum",
     enum: Status,
@@ -49,6 +55,7 @@ export class Products extends BaseEntity {
   @UpdateDateColumn({ type: "timestamp" })
   modifiedAt: Date;
 
-  @ManyToOne(() => Accounts, (account) => account.products)
-  account: Accounts;
+  @OneToMany(() => Sales, sale => sale.product)
+  sales: Sales[];
+
 }
