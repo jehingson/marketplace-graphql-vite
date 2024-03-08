@@ -105,8 +105,6 @@ Las credenciales de usuario administrado se pueden utilizar para:
 * **Contraseña:** /XjSBm9bsRRg
 
 
-* Persona que realizó el cambio: [Nombre de la persona]
-
 ¡Espero que esta explicación sea de ayuda! Si tienes más preguntas o necesitas más asistencia, no dudes en decírmelo.
 
 
