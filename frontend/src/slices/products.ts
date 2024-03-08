@@ -46,7 +46,7 @@ const initialState: ProductsState = {
   },
   card: null,
   pymentModal: false,
-  range: [100, 3000]
+  range: [1, 1400]
 };
 
 const { reducer, actions } = createSlice({
