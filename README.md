@@ -30,11 +30,11 @@ Este proyecto es un Marketplace desarrollado con Node.js, TypeScript, TypeORM y 
 
 1. Clona el repositorio del proyecto desde GitHub:
 
-\\\ git clone   \
+\`\`\` git clone   \
 
 2. Accede al directorio del backend:
 
-\\\ cd backend  \
+\\ cd backend  \
 
 3. Instala las dependencias del proyecto:
 
