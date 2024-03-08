@@ -30,38 +30,49 @@ Este proyecto es un Marketplace desarrollado con Node.js, TypeScript, TypeORM y 
 
 1. Clona el repositorio del proyecto desde GitHub:
 
-```
-   git clone 
-
-```
+``` git clone  ```
 2. Accede al directorio del backend:
 
-```
-   cd backend 
-
-```
+``` cd backend ```
 
 3. Instala las dependencias del proyecto:
 
-```
-   yarn install
-
-```
+``` yarn install ```
 
 4. Incializa docker para la base de datos en local
 
-```
-   docker compose up
-
-```
+``` docker compose up ```
 
 5. Inicia el servidor:
 
-```
-   yarn dev 
-
-```
+``` yarn dev ```
 
 
-# React + TypeScript + Vite
+# React + TypeScript + Vite FRONTEND LOCAL
+
+1. en la caperta raiz del repositorio clonado accede al directorio frontend
+
+``` cd backend  ```
+
+2. Instala las dependencias del proyecto:
+
+``` yarn install ```
+
+5. Inicia el proyecto:
+
+``` yarn dev ```
+
+
+## Ambiente de Producción (Testing) 
+ 
+El código en un ambiente de producción (testing) se encuentra disponible en la siguiente URL: [https://master.d1qpmdwepauizz.amplifyapp.com](clics) 
+ 
+Este ambiente de producción (testing) puede ser utilizado para probar la funcionalidad del proyecto en un entorno controlado antes de implementarlo en producción. ¡Asegúrate de realizar pruebas exhaustivas para garantizar un rendimiento óptimo! 
+ 
+Al incluir esta sección en tu README.md, proporcionas a los usuarios la información necesaria para acceder al ambiente de producción (testing) y realizar pruebas en un entorno simulado antes de desplegar el proyecto en producción. 
+
+¡Espero que esta explicación sea de ayuda! Si tienes más preguntas o necesitas más asistencia, no dudes en decírmelo.
+
+
+
 
