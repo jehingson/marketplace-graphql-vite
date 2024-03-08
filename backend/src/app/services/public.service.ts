@@ -6,7 +6,6 @@ import { Products } from '../models/products.model';
 @Service()
 export class PublicService {
   products = async ({ limit, offset, inputValue, range }) => {
-    console.log("prices", range)
     try {
       const resposity = AppDataSource.getRepository(Products);
         const result = await resposity
@@ -23,7 +22,7 @@ export class PublicService {
           )
           .skip(offset * limit)
           .take(limit)
-          .orderBy("products.createdAt", "ASC")
+          .orderBy("products.createdAt", "DESC")
           .getManyAndCount();
       
 

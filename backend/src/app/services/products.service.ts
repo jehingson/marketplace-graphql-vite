@@ -29,7 +29,7 @@ export class ProductsService {
           )
           .skip(offset * limit)
           .take(limit)
-          .orderBy("products.createdAt", "ASC")
+          .orderBy("products.createdAt", "DESC")
           .getManyAndCount();
       } else {
         result = await resposity
@@ -45,7 +45,7 @@ export class ProductsService {
           )
           .skip(offset * limit)
           .take(limit)
-          .orderBy("products.createdAt", "ASC")
+          .orderBy("products.createdAt", "DESC")
           .getManyAndCount();
       }
 
