@@ -11,7 +11,7 @@ export default function Login() {
   return (
     <PageLayout title="Iniciar sesión - Markes Places" type="empty">
       <Header
-        toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
+        setCardOpen={() => setSidebarOpen(!isSidebarOpen)}
         toggleMobileSidebar={() => setMobileSidebarOpen(true)}
       />
       <Container

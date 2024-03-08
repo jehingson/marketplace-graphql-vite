@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "src/store";
 const RangeSlider = () => {
   const dispatch = useDispatch()
   const { range } = useSelector((store) => store.product_state)
-  const handleChange = (event: any, newValue: any) => {
+  const handleChange = (_event: any, newValue: any) => {
     setTimeout(() => {
       dispatch(setRange(newValue))
     }, 100)

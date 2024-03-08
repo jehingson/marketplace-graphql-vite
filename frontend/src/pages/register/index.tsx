@@ -12,7 +12,7 @@ export default function Register() {
   return (
     <PageLayout title="Register - Markes Places" type="empty">
       <Header
-        toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
+        setCardOpen={() => setSidebarOpen(!isSidebarOpen)}
         toggleMobileSidebar={() => setMobileSidebarOpen(true)}
       />
       <Container

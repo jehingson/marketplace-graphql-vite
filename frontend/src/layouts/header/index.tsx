@@ -9,10 +9,10 @@ import useCardCount from 'src/hooks/useCardCount';
 
 interface PropsT {
   toggleMobileSidebar: () => void;
-  toggleSidebar: () => void;
   setCardOpen: (value: boolean) => void;
 }
-const Header = ({ toggleMobileSidebar, toggleSidebar, setCardOpen }: PropsT) => {
+
+const Header = ({ toggleMobileSidebar, setCardOpen }: PropsT) => {
   const { isAuthenticated } = useAuth();
   const { count } = useCardCount();
   const location = useLocation();

@@ -1,5 +1,5 @@
 import { Box, IconButton, Avatar, Menu, MenuItem, ListItemIcon, ListItemText, Button } from '@mui/material';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import PlaylistAddCheckRoundedIcon from '@mui/icons-material/PlaylistAddCheckRounded';
@@ -10,7 +10,7 @@ const Profile = () => {
   const { logout } = useAuth()
   const navigate = useNavigate();
   const [anchorEl2, setAnchorEl2] = useState(null);
-  const handleClick2 = (event) => {
+  const handleClick2 = (event: any) => {
     setAnchorEl2(event.currentTarget);
   };
   const handleClose2 = () => {

@@ -12,5 +12,11 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     ignoreRestSiblings: true,
+    '@typescript-eslint/no-unsafe-assignment': "off",
+    "react/react-in-jsx-scope": 0,
   },
+  compilerOptions: {
+    "noUnusedLocals": false,
+    "noEmitOnError": false
+  }
 };

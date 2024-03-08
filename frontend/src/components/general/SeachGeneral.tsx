@@ -10,7 +10,7 @@ interface Props {
   size?: string
 }
 
-const SearchGeneral = ({ handleSearchValueChange, value, placeholder, size = "large" }: Props) => {
+const SearchGeneral = ({ handleSearchValueChange, value, placeholder }: Props) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleSearchValueChange(event.target.value)

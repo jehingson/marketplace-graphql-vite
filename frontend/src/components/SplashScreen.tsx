@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 
 const SlashScreen: FC = () => (
   <Box

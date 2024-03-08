@@ -1,15 +1,7 @@
 import { Button, Card, Grid } from '@mui/material';
-import React from 'react';
 import SearchGeneral from '../general/SeachGeneral';
-import CreateEndUodate from './createEndUpdate';
 import { setFilterInventory } from 'src/slices/products';
 import { useDispatch, useSelector } from 'src/store';
-
-interface Filter {
-  inputValue: string;
-  limit: number;
-  offset: number;
-}
 
 interface Props {
   setShow: (value: boolean) => void;

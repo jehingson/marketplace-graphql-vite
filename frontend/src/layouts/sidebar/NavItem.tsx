@@ -4,7 +4,6 @@ import {
   ListItemIcon,
   ListItem,
   List,
-  styled,
   ListItemText,
   useTheme
 } from '@mui/material';

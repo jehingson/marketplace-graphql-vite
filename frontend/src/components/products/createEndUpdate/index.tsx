@@ -77,7 +77,7 @@ export default function CreateEndUpdate({ show, handleClose, selecteProduct }: P
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormData>({ defaultValues, resolver });
+  } = useForm({ defaultValues, resolver });
 
   const submitHandler = async (formData: FormData) => {
     if (!images) {

@@ -90,7 +90,7 @@ const LoginEndRegister = ({
     clearErrors,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ defaultValues, resolver });
+  } = useForm({ defaultValues, resolver });
 
   const submitHandler = async (formData: FormData) => {
     const tmpLoginInput = createLoginSubmitionObject(formData.password);
@@ -154,7 +154,7 @@ const LoginEndRegister = ({
                       }}
                       label="Usuario"
                       error={!!errors.username}
-                      helperText={errors.username?.message}
+                      helperText={errors?.username?.message ?? false}
                     />
                   )}
                 />

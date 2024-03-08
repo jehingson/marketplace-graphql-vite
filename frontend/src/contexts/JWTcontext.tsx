@@ -69,6 +69,7 @@ const initialState: State = {
 };
 
 const handlers: Record<string, (state: State, action: Action) => State> = {
+  // eslint-disable-next-line no-unused-vars
   INITIALIZE: (state: State, action: InitializeAction): State => {
     const { isAuthenticated, user } = action.payload;
 
@@ -166,8 +167,6 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
       },
     });
   };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateUser = async (user: User): Promise<void> => {
     localStorage.setItem('user', JSON.stringify(user));
     dispatch({

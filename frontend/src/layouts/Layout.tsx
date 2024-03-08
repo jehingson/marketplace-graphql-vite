@@ -26,7 +26,7 @@ const Layout = () => {
   const { isAuthenticated } = useAuth();
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const [isCardOpen, setCardOpen] = useState(false);
+  const [isCardOpen, setCardOpen] = useState<boolean>(false);
 
   return (
     <MainWrapper>
@@ -47,7 +47,6 @@ const Layout = () => {
         {/* Header */}
         {/* ------------------------------------------- */}
         <Header
-          toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
           toggleMobileSidebar={() => setMobileSidebarOpen(true)}
           setCardOpen={setCardOpen}
         />

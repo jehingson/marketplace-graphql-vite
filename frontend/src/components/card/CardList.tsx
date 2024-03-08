@@ -2,7 +2,6 @@ import { useMutation } from '@apollo/client';
 import {
   Box,
   Button,
-  Divider,
   Table,
   TableBody,
   TableCell,
