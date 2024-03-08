@@ -65,11 +65,31 @@ Este proyecto es un Marketplace desarrollado con Node.js, TypeScript, TypeORM y 
 
 ## Ambiente de Producción (Testing) 
  
-El código en un ambiente de producción (testing) se encuentra disponible en la siguiente URL: [https://master.d1qpmdwepauizz.amplifyapp.com](clics) 
+El código en un ambiente de producción (testing) se encuentra disponible en la siguiente URL: [clics](https://master.d1qpmdwepauizz.amplifyapp.com/) 
  
 Este ambiente de producción (testing) puede ser utilizado para probar la funcionalidad del proyecto en un entorno controlado antes de implementarlo en producción. ¡Asegúrate de realizar pruebas exhaustivas para garantizar un rendimiento óptimo! 
  
-Al incluir esta sección en tu README.md, proporcionas a los usuarios la información necesaria para acceder al ambiente de producción (testing) y realizar pruebas en un entorno simulado antes de desplegar el proyecto en producción. 
+## Credenciales de usuario administrado
+
+**Introducción**
+
+Este archivo contiene las credenciales de un usuario administrado. Estos usuarios se crean en un entorno más controlado y no desde la plataforma web.
+
+**Uso de las credenciales**
+
+Las credenciales de usuario administrado se pueden utilizar para:
+
+* Acceder a la plataforma web.
+* Realizar tareas administrativas en la plataforma.
+
+
+**Credenciales**
+
+* **Email:** admin@gmail.com
+* **Contraseña:** /XjSBm9bsRRg
+
+
+* Persona que realizó el cambio: [Nombre de la persona]
 
 ¡Espero que esta explicación sea de ayuda! Si tienes más preguntas o necesitas más asistencia, no dudes en decírmelo.
 
