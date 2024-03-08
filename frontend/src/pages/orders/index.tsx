@@ -1,10 +1,10 @@
-import ContructionComponent from "src/components/ContructionComponent"
+import Orders from "src/components/orders"
 import PageLayout from "src/layouts/PageLayout"
 
 export const Component = () => {
   return (
-    <PageLayout title="Users - Markes Places" type="empty">
-      <ContructionComponent />
+    <PageLayout title="Orders - Markes Places" type="empty">
+      <Orders />
     </PageLayout>
   )
 }

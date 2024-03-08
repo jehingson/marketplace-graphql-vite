@@ -1,6 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { Product } from 'src/types/product';
+
 interface Filter {
   inputValue: string;
   limit: number;
@@ -15,6 +16,8 @@ interface Card {
 interface ProductsState {
   filterInventory: Filter;
   filterProductPublic: Filter;
+  filterOrders: Filter;
+  filterSales: Filter;
   card: Card[] | null;
   pymentModal: boolean;
 }
@@ -28,6 +31,16 @@ const initialState: ProductsState = {
   filterProductPublic: {
     inputValue: '',
     limit: 12,
+    offset: 0,
+  },
+  filterOrders: {
+    inputValue: '',
+    limit: 10,
+    offset: 0,
+  },
+  filterSales: {
+    inputValue: '',
+    limit: 10,
     offset: 0,
   },
   card: null,
@@ -47,6 +60,12 @@ const { reducer, actions } = createSlice({
     setFilterProductPublic: (state: ProductsState, action: PayloadAction<Filter>) => {
       state.filterProductPublic = action.payload;
     },
+    setFilterOrder: (state: ProductsState, action: PayloadAction<Filter>) => {
+      state.filterOrders = action.payload;
+    },
+    setFilterSales: (state: ProductsState, action: PayloadAction<Filter>) => {
+      state.filterOrders = action.payload;
+    },
     setAddCard: (state: ProductsState, action: PayloadAction<Card[] | null>) => {
       state.card = action.payload;
     },
@@ -58,4 +77,10 @@ const { reducer, actions } = createSlice({
 
 export default reducer;
 
-export const { setFilterInventory, setFilterProductPublic, setAddCard, setPymentModal } = actions;
+export const {
+  setFilterInventory,
+  setFilterProductPublic,
+  setFilterOrder,
+  setAddCard,
+  setPymentModal,
+} = actions;

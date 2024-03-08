@@ -67,7 +67,7 @@ export default function Inventories() {
               {inventories.map((inventory: Product) => (
                 <TableRow key={inventory.id} hover role="checkbox" tabIndex={-1}>
                   {isAdmin && <TableCell>{inventory?.account?.username ?? ''}</TableCell>}
-                  <TableCell sx={{ p: 0 }}>
+                  <TableCell sx={{ p: 0 }} align='center'>
                     <Typography>{inventory.name}</Typography>
                   </TableCell>
                   <TableCell sx={{ p: 0 }}>
