@@ -35,6 +35,7 @@ export default function ItemProduct({ product, setSelectProduct, handleCardProdu
         sx={{
           objectFit: 'contain',
           width: '100%',
+          height: { xs: 300, md: 200 },
         }}
       />
       <Box sx={{ position: 'absolute', top: 0 }}>
@@ -43,31 +44,33 @@ export default function ItemProduct({ product, setSelectProduct, handleCardProdu
         </IconButton>
       </Box>
       <Box p={2}>
-        <Typography variant="h5"
+        <Typography variant="body1"
           sx={{
+            fontWeight: "bold",
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            WebkitLineClamp: 1,
+            textOverflow: 'ellipsis',
+          }}
+        >{product.name}</Typography>
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          sx={{
+            fontWeight: 600,
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
             WebkitLineClamp: 2,
             textOverflow: 'ellipsis',
           }}
-        >{product.name}</Typography>
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          sx={{
-            display: '-webkit-box',
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            WebkitLineClamp: 3,
-            textOverflow: 'ellipsis',
-          }}
         >
           {product.description}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "space-between", justifyItems: "center" }}>
-          <Typography color="primary" variant="body2">
-            Disponibles: <Typography component="span">{product?.quantity ?? 0}</Typography> 
+          <Typography color="primary" variant="body2" fontWeight="600">
+            Disponibles: {product?.quantity ?? 0}
           </Typography>
           <Typography variant='body2' sx={{ fontWeight: "bold"}}>{product?.sku ?? ""}</Typography>
         </Box>
@@ -83,16 +86,20 @@ export default function ItemProduct({ product, setSelectProduct, handleCardProdu
             {formatNumberCurrency(calculatePriceTax(product.prices, product.tax, quantity))}
           </Typography>
         </Box>
-        <Box>
+        <Box display="flex" justifyContent="space-between">
           <CardQuantityGeneral
             quantity={quantity}
             setQuantity={setQuantity}
             accessible={product?.quantity ?? 0}
           />
+          <IconButton color="primary" onClick={() => setSelectProduct(product)}>
+            <PreviewOutlinedIcon />
+          </IconButton>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box>
           <Button
             variant="contained"
+            fullWidth
             endIcon={<AddShoppingCartOutlinedIcon />}
             onClick={() => {
               handleCardProduct({
@@ -105,9 +112,7 @@ export default function ItemProduct({ product, setSelectProduct, handleCardProdu
           >
             Comprar
           </Button>
-          <IconButton color="primary" onClick={() => setSelectProduct(product)}>
-            <PreviewOutlinedIcon />
-          </IconButton>
+          
         </Box>
       </Box>
     </Paper>

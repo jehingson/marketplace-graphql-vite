@@ -12,7 +12,7 @@ export default function CardQuantityGeneral({ quantity, setQuantity  }: Props) {
     <Box display="flex" alignItems="center" gap={1} py={1}>
       <Button
         color="error"
-        variant='outlined'
+        variant='contained'
         sx={{
           padding: 0,
         }}
@@ -26,12 +26,14 @@ export default function CardQuantityGeneral({ quantity, setQuantity  }: Props) {
       >
         <RemoveOutlinedIcon />
       </Button>
-      <Typography>{quantity}</Typography>
+      <Typography variant='h6' color="indigo">{quantity}</Typography>
       <Button
-        color="primary"
-        variant='outlined'
+        color="info"
+        variant='contained'
         sx={{
           padding: 0,
+          margin: 0,
+          width: "30px"
         }}
         onClick={() => {
           setQuantity(quantity + 1);

@@ -29,7 +29,7 @@ export default function Toolbar({ setShow }: Props) {
         <Grid item xs={12} md={4}>
           <SearchGeneral
             value={filter.inputValue}
-            placeholder="Buscar Productos"
+            placeholder="Buscar por nombre o Sku"
             handleSearchValueChange={handleSearchValueChange}
           />
         </Grid>

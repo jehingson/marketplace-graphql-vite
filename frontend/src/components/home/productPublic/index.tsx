@@ -62,7 +62,7 @@ export default function ProductPublic({ card, products, amount, loading, filter 
   return (
     <Grid container>
       <Grid item xs={12} mt={2}>
-        <Toolbar filter={filter} />
+        <Toolbar filter={filter} products={products} />
       </Grid>
       <PaginationGeneral
         count={amount}

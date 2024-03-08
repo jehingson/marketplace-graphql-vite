@@ -10,10 +10,10 @@ export const validationLogin = (typeRegister: boolean = false) => {
   .max(255)
   const passwordSchema = Yup
   .string()
-  // .matches(
-  //   passwordRegex,
-  //   'La contraseña debe tener al menos 10 caracteres, una mayúscula, una minúscula, un número y un caracter especial.',
-  // );
+  .matches(
+    passwordRegex,
+    'La contraseña debe tener al menos 10 caracteres, una mayúscula, una minúscula, un número y un caracter especial.',
+  );
   const confirmPasswordSchema = Yup
   .string()
   .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir.');

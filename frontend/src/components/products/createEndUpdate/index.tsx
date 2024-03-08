@@ -19,6 +19,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { validationProducts } from 'src/validation/validationProduct';
 import { useMutation } from '@apollo/client';
 import CREATE_PRODUCT from 'src/graphql/mutations/products/createProduct';
+import GET_INVENTORIES from 'src/graphql/querys/getInventories';
 
 interface Props {
   show: boolean;
@@ -46,6 +47,8 @@ const defaultValues: FormData = {
   tax: false,
 };
 
+
+
 export default function CreateEndUpdate({ show, handleClose, selecteProduct }: Props) {
   const resolver = useMemo(() => yupResolver(validationProducts()), []);
   const [loading, setLoading] = useState(false);
@@ -53,6 +56,7 @@ export default function CreateEndUpdate({ show, handleClose, selecteProduct }: P
   const [errorImage, setErrorImage] = useState<string>('');
 
   const [createProduct, { loading: loadingCreate }] = useMutation(CREATE_PRODUCT, {
+    refetchQueries: [GET_INVENTORIES],
     onCompleted: (data) => {
       const { createProduct = null } = data;
       if (createProduct?.success) {
